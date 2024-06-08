@@ -1,0 +1,39 @@
+.filter-title {
+	color: $main-color;
+	font-weight: 600;
+	font-size: 18px;
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}
+
+.airlines-form {
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+.filter {
+	&:not(:last-child) {
+		margin-bottom: 15px;
+	}
+	&__button {
+		margin-right: 3px;
+		cursor: pointer;
+	}
+	&__label {
+		cursor: pointer;
+	}
+	&__input {
+		margin: 0 3px;
+		padding: 2px 5px;
+		font-size: 16px;
+		border: 1px solid $main-color;
+	}
+	&__row {
+		&_price {
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+}
+
+.container {
+	max-width: 1200px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.aside-filter {
+	max-width: 280px;
+}
+.filter-price {
+	display: inline-block;
+	&:not(:last-child) {
+		margin-bottom: 5%;
+	}
+}
+
+.flights {
+	width: 100%;
+}
+
+
