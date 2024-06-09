@@ -14,7 +14,7 @@
 	&__body {
 		padding: 0px 30px;
 		&:not(:last-child) {
-			margin-bottom: 30px;
+			margin-bottom: 5px;
 		}
 		@media (max-width: 650px) {
 			padding: 0;
@@ -48,6 +48,11 @@
 
 	&__airport {
 		color: $blue-color;
+	}
+
+	&__arror {
+		display: inline-block;
+		margin-top: 5px;
 	}
 
 	// .flight-option__data
@@ -91,6 +96,7 @@
 	// .top-flight-option__logo
 
 	&__logo {
+		max-width: 150px;
 		color: $white-color;
 		img {
 			max-width: 100%;

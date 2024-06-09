@@ -13,6 +13,13 @@
 
 .aside-filter {
 	max-width: 280px;
+	@media (max-width: 650px) {
+		max-width: none;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		column-gap: 30px;
+	}
 }
 .filter-price {
 	display: inline-block;
@@ -24,5 +31,3 @@
 .flights {
 	width: 100%;
 }
-
-

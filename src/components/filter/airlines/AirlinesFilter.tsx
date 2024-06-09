@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getFlights } from '../../../api/services/getFlights';
 import { FlightResult } from '../../../api/types';
+import { removeDuplicates } from '../helpers';
 
 export default function AirlinesFilter() {
   const [flights, setFlights] = useState<FlightResult[] | null>(null);
+  // const [airlines, setAirlines] = useState<FlightResult[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -12,7 +14,11 @@ export default function AirlinesFilter() {
       const data = await getFlights();
       setIsLoading(false);
 
-      if (data) setFlights(data);
+      if (data) {
+        const uniqData = removeDuplicates(data);
+        // setAirlines(uniqData);
+        setFlights(uniqData);
+      }
     };
 
     handleGetFlights();
@@ -22,10 +28,10 @@ export default function AirlinesFilter() {
     <div className="filter">
       <h4 className="filter__title filter-title">Авиакомпании</h4>
       {isLoading ? (
-        <p>Загружаем полёты...</p>
+        <p>Загружаем авиакомпании...</p>
       ) : (
         <form className="filter__form airlines-form">
-          {flights &&
+          {flights ? (
             flights.map(data => (
               <div key={data.flightToken} className="filter__row">
                 <input id={data.flight.carrier.uid} type="checkbox" className="filter__input" />
@@ -33,7 +39,10 @@ export default function AirlinesFilter() {
                   - {data.flight.carrier.caption}
                 </label>
               </div>
-            ))}
+            ))
+          ) : (
+            <p>Авиакомпании не найдены :(</p>
+          )}
         </form>
       )}
     </div>

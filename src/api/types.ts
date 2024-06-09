@@ -141,4 +141,4 @@ interface FlightResponse {
   };
 }
 
-export type { FlightResponse, FlightResult };
+export type { FlightResponse, FlightResult, Flight, Price, FlightSegment, Airport };
