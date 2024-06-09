@@ -12,12 +12,23 @@
 	// .flight-option__body
 
 	&__body {
-		padding: 0px 20px;
+		position: relative;
+		padding: 20px;
 		&:not(:last-child) {
 			margin-bottom: 5px;
 		}
-		@media (max-width: 650px) {
-			padding: 0;
+
+		&:nth-child(4n-2) {
+			&::before {
+				content: "";
+				position: absolute;
+				display: block;
+				height: 100%;
+				top: 0;
+				left: 0;
+				width: 100%;
+				border-bottom: 4px solid $blue-color;
+			}
 		}
 	}
 
@@ -58,22 +69,8 @@
 	// .flight-option__data
 
 	&__data {
-		position: relative;
-		padding-bottom: 10px;
-
 		&:not(:last-child) {
 			margin-bottom: 30px;
-
-			&::before {
-				content: "";
-				position: absolute;
-				display: block;
-				height: 100%;
-				top: 0;
-				left: -3%;
-				width: 107%;
-				border-bottom: 4px solid $blue-color;
-			}
 		}
 	}
 }

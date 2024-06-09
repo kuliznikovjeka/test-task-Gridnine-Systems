@@ -1,6 +1,10 @@
 import { format } from '@formkit/tempo';
 import { FlightSegment } from '../../api/types';
 
+function generateUniqueId() {
+  return crypto.randomUUID();
+}
+
 function calculateFlightDetails(flight: FlightSegment) {
   const lang = 'ru';
 
@@ -17,7 +21,15 @@ function calculateFlightTime(arrivalTime: string, departureTime: string) {
   const departureDate: number = new Date(departureTime).getTime();
 
   const differenceInMilliseconds = arrivalDate - departureDate;
-  return `${Math.floor(differenceInMilliseconds / (1000 * 60 * 60))} ч ${Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60))} мин`;
+  const hours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
+  const minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
+
+  return { hours, minutes };
+}
+
+function convertTimeToMinutes(hours: number, minutes: number) {
+  const minutesInOneHour = 60;
+  return hours * minutesInOneHour + minutes;
 }
 
 function collectDataTogether(flight: FlightSegment) {
@@ -34,4 +46,4 @@ function collectDataTogether(flight: FlightSegment) {
   };
 }
 
-export { calculateFlightDetails, calculateFlightTime, collectDataTogether };
+export { calculateFlightDetails, calculateFlightTime, collectDataTogether, generateUniqueId, convertTimeToMinutes };

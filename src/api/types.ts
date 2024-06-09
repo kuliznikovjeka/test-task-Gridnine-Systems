@@ -33,7 +33,7 @@ interface Luggage {
 
 interface Price {
   amount: string;
-  currency: string;
+  currency?: string;
   currencyCode: string;
 }
 
@@ -141,4 +141,4 @@ interface FlightResponse {
   };
 }
 
-export type { FlightResponse, FlightResult, Flight, Price, FlightSegment, Airport,  };
+export type { FlightResponse, FlightResult, Flight, Price, FlightSegment, Airport };

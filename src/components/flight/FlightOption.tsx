@@ -1,13 +1,13 @@
 import { FlightResult } from '../../api/types';
-import { collectDataTogether } from './helpers';
+import { collectDataTogether, generateUniqueId } from './helpers';
 import iconClock from '../../assets/icons/clock.svg';
 import iconArror from '../../assets/icons/arrow.svg';
 import logo from '../../assets/logo-company.png';
 
 export default function FlightOption(props: FlightResult) {
   const { flight } = props;
-
   const priceObj = flight.price.total;
+
   const firstFlight = flight.legs[0].segments[0];
   const secondFlight = flight.legs[0].segments[1];
 
@@ -15,9 +15,9 @@ export default function FlightOption(props: FlightResult) {
   const allDataSecondFlight = collectDataTogether(secondFlight);
 
   const dataFlightDetails = [allDataFirstFlight, allDataSecondFlight];
-  console.log(dataFlightDetails);
 
   const price = `${priceObj.amount}  ${priceObj.currency}`;
+  const transfers = flight.legs.length - 1;
 
   return (
     <article className="flight-option">
@@ -29,7 +29,7 @@ export default function FlightOption(props: FlightResult) {
         </div>
       </div>
       {dataFlightDetails.map(detail => (
-        <div className="flight-option__body">
+        <div key={generateUniqueId()} className="flight-option__body">
           <p className="flight-option__path">
             {detail?.depatureTown}, {detail?.depatureAirport}
             <span className="flight-option__airport"> ({detail?.depatureAirportUid}) </span>
@@ -47,7 +47,8 @@ export default function FlightOption(props: FlightResult) {
                   </span>
                 </span>
                 <span className="data-flight-option__transfer-time">
-                  <img src={iconClock} alt="Иконка часов"></img> {detail?.durationTime}
+                  <img src={iconClock} alt="Иконка часов"></img> {detail.durationTime.hours} ч.{' '}
+                  {detail.durationTime.minutes} мин.
                 </span>
                 <span className="data-flight-option__date-landing">
                   <span className="data-flight-option__day-of-week">
@@ -57,7 +58,9 @@ export default function FlightOption(props: FlightResult) {
                 </span>
               </div>
               <div className="span-container">
-                <span className="data-flight-option__count-transfer">1 пересадка</span>
+                <span className="data-flight-option__count-transfer">
+                  {transfers ? `${transfers} пересадка` : `${transfers} пересадок`}
+                </span>
                 <div className="divider"></div>
               </div>
               <p className="data-flight-option__company-name">Рейс выполняет: {detail.airline}</p>

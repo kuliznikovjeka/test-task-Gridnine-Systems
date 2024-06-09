@@ -1,20 +1,20 @@
-export const sortOptions = [
+const priceIncrease = 'price-increase';
+const priceDecrease = 'price-decrease';
+const travelTime = 'travel-time';
+
+const sortOptions = [
   {
-    id: 'price-increase',
+    id: priceIncrease,
     label: 'по возрастанию цены',
     name: 'sort',
-    value: 'price-increase',
+    value: priceIncrease,
   },
   {
-    id: 'price-decrease',
+    id: priceDecrease,
     label: 'по убыванию цены',
     name: 'sort',
-    value: 'price-decrease',
-  },
-  {
-    id: 'travel-time',
-    label: 'по времени в пути',
-    name: 'sort',
-    value: 'travel-time',
+    value: priceDecrease,
   },
 ];
+
+export { priceDecrease, priceIncrease, travelTime, sortOptions };
