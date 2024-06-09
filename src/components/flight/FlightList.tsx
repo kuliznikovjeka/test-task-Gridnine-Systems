@@ -17,18 +17,7 @@ export default function FlightList() {
 
   return (
     <div className="flights">
-      {flights &&
-        flights.map(data => (
-          <FlightOption
-            key={data?.flightToken}
-            price={data?.flight?.price?.total}
-            carrier={data?.flight?.carrier?.caption}
-            fromCity={data?.flight?.legs[0]?.segments[0]?.departureCity?.caption}
-            toCity={data?.flight?.legs[0]?.segments[0]?.arrivalCity?.caption}
-            fromAiport={data?.flight?.legs[0]?.segments[0]?.departureAirport}
-            toAiport={data?.flight?.legs[0]?.segments[0]?.arrivalAirport}
-          />
-        ))}
+      {flights && flights.map(data => <FlightOption key={data.flightToken} flight={data.flight} />)}
     </div>
   );
 }

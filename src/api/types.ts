@@ -130,9 +130,9 @@ interface Flight {
 }
 
 interface FlightResult {
-  hasExtendedFare: boolean;
+  hasExtendedFare?: boolean;
   flight: Flight;
-  flightToken: string;
+  flightToken?: string;
 }
 
 interface FlightResponse {
@@ -141,4 +141,4 @@ interface FlightResponse {
   };
 }
 
-export type { FlightResponse, FlightResult, Flight, Price, FlightSegment, Airport };
+export type { FlightResponse, FlightResult, Flight, Price, FlightSegment, Airport,  };

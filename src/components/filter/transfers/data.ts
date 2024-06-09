@@ -11,16 +11,4 @@ export const transfersOptions = [
     name: 'stops',
     value: 'one-stop',
   },
-  {
-    id: 'two-stops',
-    label: '2 пересадки',
-    name: 'stops',
-    value: 'two-stops',
-  },
-  {
-    id: 'three-stops',
-    label: '3 пересадки',
-    name: 'stops',
-    value: 'three-stops',
-  },
 ];
