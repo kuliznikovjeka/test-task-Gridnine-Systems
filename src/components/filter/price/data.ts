@@ -1,12 +1,12 @@
 export const priceOptions = [
   {
-    id: 'price-from',
+    id: 'priceFrom',
     label: 'от',
     name: 'price',
     value: 'от',
   },
   {
-    id: 'price-to',
+    id: 'priceTo',
     label: 'до',
     name: 'price',
     value: 'до',

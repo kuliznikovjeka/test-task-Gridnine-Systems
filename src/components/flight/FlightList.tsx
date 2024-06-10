@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import FlightOption from './FlightOption';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { selectAllDataFlights } from '../../store/selectors';
@@ -28,22 +28,20 @@ export default function FlightList() {
     dispatch(showMoreFlights(countToShowFlights + countFlights));
   }
 
+  if (isLoading) {
+    return <p>Загружаем полёты... Пожождите немного :)</p>;
+  } else if (!renderData.length) {
+    return <p>Ошибка, полёты не найдены!</p>;
+  }
+
   return (
     <div className="flights">
-      {isLoading ? (
-        <p>Загружаем билеты... Подождите немного :)</p>
-      ) : renderData ? (
-        <>
-          {renderData.slice(0, countToShowFlights).map(flightData => (
-            <FlightOption key={flightData?.flightToken} flight={flightData?.flight} />
-          ))}
-          <button className="flights__button" onClick={handleClickButton}>
-            Показать ещё
-          </button>
-        </>
-      ) : (
-        <p>К сожалению ошибка на сервере...</p>
-      )}
+      {renderData.slice(0, countToShowFlights).map(flightData => (
+        <FlightOption key={flightData?.flightToken} flight={flightData?.flight} />
+      ))}
+      <button className="flights__button" onClick={handleClickButton}>
+        Показать ещё
+      </button>
     </div>
   );
 }
